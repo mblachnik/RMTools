@@ -1,20 +1,22 @@
-RapidMiner Extension Template
+RapidMiner Tools Extension (RM Tools)
 =============================
 
-A template project for creating a RapidMiner Studio extension. 
+This extension provides seceral operators which support and simplify developing process in RapidMiner
 
-### Prerequisite
-* Requires Gradle 2.3+ (get it [here](http://gradle.org/installation) or use the Gradle wrapper shipped with this template)
-
-### Getting started
-1. Clone the extension template
-
-2. Change the extension settings in _build.gradle_ (e.g. replace 'Template' by the desired extension name)
-
-3. Initialize the extension project by executing the _initializeExtensionProject_ Gradle task (e.g. via 'gradlew initializeExtensionProject')
-
-4. Add an extension icon by placing an image named "icon.png" in  _src/main/resources/META-INF/_. 
-
-5. Build and install your extension by executing the _installExtension_ Gradle task 
-
-6. Start RapidMiner Studio and check whether your extension has been loaded
+These are:
+  * IO Operators
+    * Read/Write Keel - which allows to load and write data in Keel project format
+    * Read Log - which allows to load log file into RapidMiner
+  * Utils
+    * LogValue2Annotation - which allows to transform log values into annotations - this is especially usefull in parallel execution when macros may fail
+    * Annotation2LogValue - which allows to deliver annotation as log value so a user can use log to record value represented in annotation
+    * LogValue2Macro - an operator which delivers log value as macro
+    * Aggregate and Filter Examples - which allows to filter examples which fulfile certain condition for given attribute
+    * ExtractAttributeNameByRoleOperator - which allows to extract attribute name assoctiated with given role (for example extract attribute name of lables)
+    * Filter attributes by Role - wich allows to keep attributes which are of given role
+  * Performance
+    * ProvidePerformanceAsLogValue - which provides performance as log value, so log can be used to record log value
+  * Weighting
+    * Data to Weights - converts dataset into AttributeWeights object- especially useful when attribute weights are provided in external file, then you can covert them into object and apply to another dataset.
+    
+    
