@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<operators name="rm_tools" version="6.0" docbundle="org/prules/rmtools/resources/i18n/OperatorsDocRMTools">
+    <group key="">
+        <icon>import.png</icon>
+        <group key="IO Operators">
+            <operator>
+                <key>Read Keel</key>
+                <class>org.prules.rmtools.io.KeelExampleSource</class>
+                <!--<replaces>ReadKeel</replaces>-->
+            </operator>
+            <operator>
+                <key>Read Sparse</key>
+                <class>org.prules.rmtools.io.SparseFormatExampleSource</class>
+                <!--<replaces>ReadKeel</replaces>-->
+            </operator>                                    
+            <operator>
+                <key>Write Sparse</key>
+                <class>org.prules.rmtools.io.SpecialFormatExampleSetWriter</class>
+                <!--<replaces>ReadKeel</replaces>-->
+            </operator>
+            <operator>
+                <key>ReadLog</key>
+                <class>org.prules.rmtools.io.LogExampleSource</class>
+                <!--<replaces>ReadKeel</replaces>-->
+            </operator>
+            <operator>
+                <key>Write Keel</key>
+                <class>org.prules.rmtools.io.KeelExampleSetWriter</class>
+                <!--<replaces>ReadKeel</replaces>-->
+            </operator> 
+        </group>
+        <icon>bookmark_blue.png</icon>
+        <group key="Utils">
+            <operator>
+                <key>LogValue2Annotation</key>
+                <class>org.prules.rmtools.util.LogValue2Annotation</class>
+                <!--<replaces>ReadKeel</replaces>-->
+            </operator>
+            <operator>
+                <key>Annotation2LogValue</key>
+                <class>org.prules.rmtools.util.Annotation2LogValue</class>
+                <!--<replaces>ReadKeel</replaces>-->
+            </operator>
+            <operator>
+                <key>LogValue2Macro</key>
+                <class>org.prules.rmtools.util.LogValue2Macro</class>
+                <!--<replaces>ReadKeel</replaces>-->
+            </operator>
+            <operator>
+                <key>FilterExamplesByCondition</key>
+                <class>org.prules.rmtools.util.FilterExamplesByConditionOperator</class>
+                <!--<replaces>ReadKeel</replaces>-->
+            </operator>
+            <operator>
+                <key>ExtractAttributeNameByRoleOperator</key>
+                <class>org.prules.rmtools.util.ExtractAttributeNameByRoleOperator</class>
+                <!--<replaces>ReadKeel</replaces>-->
+            </operator>
+            <operator>
+                <key>FilterAttributesByRole</key>
+                <class>org.prules.rmtools.util.FilterAttributesByRoleOperator</class>
+                <!--<replaces>ReadKeel</replaces>-->
+            </operator>                                
+        </group>
+        <group key="Performance">
+            <operator>
+                <key>TreePerformance</key>
+                <class>org.prules.rmtools.performance.RuleAndTreePerformance</class>
+                <!--<replaces>ReadKeel</replaces>-->
+            </operator>
+            <operator>
+                <key>ProvidePerformanceAsLogValue</key>
+                <class>org.prules.rmtools.performance.ProvidePerformanceAsLogValue</class>
+                <!--<replaces>ReadKeel</replaces>-->
+            </operator>
+        </group>
+        <!--
+        <group key="Executors">
+            <operator>
+                <key>tools_execute_program</key>
+                <class>org.prules.rmtools.executors.CommandLineOperator</class>
+                <replaces>CommandLineOperator</replaces>
+            </operator>
+            <operator>
+                <key>tools_execute_process</key>            
+                <class>org.prules.rmtools.executors.ProcessEmbeddingOperator
+                </class>
+                <replaces>ProcessEmbedder</replaces>
+            </operator>
+            <operator>
+                <key>tools_execute_groovy</key>            
+                <class>org.prules.rmtools.executors.ScriptingOperator
+                </class>                
+            </operator>
+        </group>
+        -->
+        <group key="Weighting">
+            <operator>
+                <key>data_to_weights</key>
+                <class>org.prules.rmtools.weights.Data2Weights</class>                
+            </operator>
+        </group>
+    </group>
+</operators>

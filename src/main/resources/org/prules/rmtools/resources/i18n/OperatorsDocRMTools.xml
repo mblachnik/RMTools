@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<operatorHelp lang="en_EN">
+    <operator>
+        <key>ReadLog</key>
+        <name>Read Log</name>      
+        <synopsis>Allows to read log file.</synopsis>
+        <help />
+    </operator>
+    <operator>
+        <name>Read Keel</name>
+        <synopsis>Allows to read data files provided by the Keel project.</synopsis>
+        <help />
+    </operator>
+    <operator>
+        <name>Read Sparse</name>
+        <synopsis>Allows to read data files written in sparse format.</synopsis>
+        <help />
+    </operator>
+    <operator>
+        <name>Write Sparse</name>
+        <synopsis>Allows to writa an ExampleSet data into sparse file.</synopsis>
+        <help />
+    </operator>
+   <operator>
+        <name>Write Keel</name>
+        <synopsis>Allows to write data in the format used in the Keel project.</synopsis>
+        <help />
+    </operator>
+      
+    <operator>
+        <key>LogValue2Annotation</key>
+        <synopsis>Allows to annotate input object with any LogValue.</synopsis>
+        <help />
+        <!--<replaces>ReadKeel</replaces>-->
+    </operator>
+    <operator>
+        <key>LogValue2Macro</key>
+        <synopsis>Creates macro which is set to Log Value extracted from an operator.</synopsis>
+        <help />
+        <!--<replaces>ReadKeel</replaces>-->
+    </operator>        
+    <operator>
+        <key>Annotation2LogValue</key>
+        <synopsis>Provides annotation as LogValue.</synopsis>
+        <help />
+        <!--<replaces>ReadKeel</replaces>-->
+    </operator> 
+    <operator>
+        <key>ProvidePerformanceAsLogValue</key>
+        <synopsis>Provides input performance as Log value.</synopsis>
+        <help />
+        <!--<replaces>ReadKeel</replaces>-->
+    </operator>                                 
+    <operator>
+        <key>tools_execute_groovy</key>
+        <name>Execute Groovy Script</name>
+        <synopsis>Execute Groovy Script from file.</synopsis>
+        <help>&lt;p&gt;This operator can be used to execute arbitrary Groovy
+            scripts. This basically means that analysts can write their own
+            operators directly within the process by specifiying Java code and /
+            or a Groovy script which will be interpreted and executed during
+            process runtime. For a complete reference of Groovy scripting please
+            refer to http://groovy.codehaus.org/.&lt;/p&gt; &lt;p&gt;In addition
+            to the usual scripting code elements from Groovy, the RapidMiner
+            scripting operator defines some special scripting elements:&lt;/p&gt;
+            &lt;ul&gt; &lt;li&gt;If you use the standard
+            &lt;em&gt;imports&lt;/em&gt;, all important types like Example,
+            ExampleSet, Attribute, Operator etc. as well as the most important
+            Java types like collections etc. are automatically imported and can
+            directly be used within the script. Hence, there is no need for
+            importing them in your script. However, you can of course import any
+            other class you want and use this in your script.&lt;/li&gt;
+            &lt;li&gt;The &lt;em&gt;current operator&lt;/em&gt; (the scripting
+            operator for which you define the script) is referenced by
+            &lt;code&gt;operator&lt;/code&gt;.&lt;br /&gt; Example:
+            &lt;code&gt;operator.log("text")&lt;/code&gt;&lt;/li&gt;
+            &lt;li&gt;All &lt;em&gt;operator methods&lt;/em&gt; like
+            &lt;code&gt;log&lt;/code&gt; (see above), accessing the input or the
+            complete process can directly be used by writing a preceding
+            &lt;code&gt;operator&lt;/code&gt;.&lt;br /&gt; Example:
+            &lt;code&gt;operator.getProcess()&lt;/code&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;em&gt;Input of the operator&lt;/em&gt; can be retrieved
+            via the input method getInput(Class) of the surrounding
+            operator.&lt;br /&gt; Example: &lt;code&gt;ExampleSet exampleSet =
+            operator.getInput(ExampleSet.class)&lt;/code&gt;&lt;/li&gt;
+            &lt;li&gt;You can &lt;em&gt;iterate over examples&lt;/em&gt; with the
+            following construct:&lt;br /&gt; &lt;code&gt;for (Example example :
+            exampleSet) { ... }&lt;/code&gt;&lt;/li&gt; &lt;li&gt;You can
+            &lt;em&gt;retrieve example values&lt;/em&gt; with the shortcut&lt;br
+            /&gt; &lt;code&gt;String value =
+            example[&amp;quot;attribute_name&amp;quot;];&lt;/code&gt; or &lt;br
+            /&gt; &lt;code&gt;double value =
+            example[&amp;quot;attribute_name&amp;quot;];&lt;/code&gt;&lt;/li&gt;
+            &lt;li&gt;You can &lt;em&gt;set example values&lt;/em&gt; with
+            &lt;code&gt;example[&amp;quot;attribute_name&amp;quot;] =
+            &amp;quot;value&amp;quot;;&lt;/code&gt; or &lt;br /&gt;
+            &lt;code&gt;example[&amp;quot;attribute_name&amp;quot;] =
+            5.7;&lt;/code&gt;&lt;/li&gt; &lt;/ul&gt;
+            &lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; Scripts written for this operator
+            may access Java code. Scripts may hence become incompatible in future
+            releases of RapidMiner.&lt;/p&gt;
+        </help>
+        <!--<replaces>ReadKeel</replaces>-->
+    </operator>
+    <operator>
+        <key>tools_execute_process</key>
+        <name>Execute Process</name>
+        <synopsis>This operator embeds a complete process previously written
+            into a file.</synopsis>
+        <help>This operator can be used to embed a complete process definition
+            into the current process definition. The process must have been
+            written into a file before and will be loaded and executed when the
+            current process reaches this operator. Optionally, the input of this
+            operator can be used as input for the embedded process. In both
+            cases, the output of the process will be delivered as output of this
+            operator. Please note that validation checks will not work for
+            process containing an operator of this type since the check cannot be
+            performed without actually loading the process.</help>    
+    </operator>
+    <operator>
+        <key>tools_execute_program</key>
+        <name>Execute Program</name>
+        <synopsis>This operator simply executes a command in a shell of the
+            underlying operating system, basically any system command or external
+            program.</synopsis>
+        <help>&lt;p&gt;This operator executes a system command. The command
+            and all its arguments are specified by the parameter
+            &lt;code&gt;command&lt;/code&gt;. The standard output stream and the
+            error stream of the process can be redirected to the logfile.
+            &lt;br/&gt; Please note also that the command is system dependent.
+            Characters that have special meaning on the shell like e.g. the pipe
+            symbol or brackets and braces do not have a special meaning to Java.
+            &lt;br/&gt; The method &lt;code&gt;Runtime.exec(String)&lt;/code&gt;
+            is used to execute the command. Please note, that this (Java) method
+            parses the string into tokens before it is executed. These tokens are
+            &lt;em&gt;not&lt;/em&gt; interpreted by a shell (which?). If the
+            desired command involves piping, redirection or other shell features,
+            it is best to create a small shell script to handle this.&lt;/p&gt;
+            &lt;p&gt;&lt;p&gt; A hint for Windows / MS DOS users: simple commands should
+            be preceeded by &lt;code&gt;cmd /c call&lt;/code&gt;, eg. &lt;code&gt;cmd /c notepad&lt;/code&gt; 
+            or just &lt;code&gt;notepad&lt;/code&gt; in case you are executing a program and not just a shell command.
+            Then Windows opens a new shell, executes the command, and closes the shell again.
+            However, Windows 7 does not open a new shell, it just executes the command.
+            &lt;p&gt; 
+            Another option would be to preceed the command with &lt;code&gt;cmd /c start&lt;/code&gt; which
+            opens the shell and keeps it open. The rest process will not be
+            executed until the shell is closed by the user. &lt;/p&gt; 
+            <!--     
+                        which opens a new
+                        shell, executes the command and closes the shell again. After this,
+                        the rest of the process will be executed. Another option would be to
+                        preceed the command with &lt;code&gt;cmd start&lt;/code&gt; which
+                        opens the shell and keeps it open. The rest process will not be
+                        executed until the shell is closed by the user. &lt;/p&gt;
+            --></help>
+    
+    
+    </operator>
+    <operator>
+        <key>FilterExamplesByCondition</key>
+        <name>Aggregate and Filter Examples</name>
+        <synopsis>This operator filters examples which fullfill given aggregation condition such as max, min, median, mode.</synopsis>
+        <help>&lt;p&gt; This operator filters examples which fulfill given aggregation condition such as max, min, mode, median. &lt;br&gt; In other words the operator searches a value which fulfills given criteria of given attribute (ex. max value of selected attribute), and than, based on this calculated value all examples which are equal to it are returned. &lt;/p&gt; &lt;p&gt; Note that all attributes are treated as numbers so for symbolic attributes this operator will also return value, but it would be a rubbish. For symbolic attributes only mode is valid&lt;/p&gt;</help>        
+    </operator>
+    
+    <operator>
+        <key>ExtractAttributeNameByRole</key>
+        <name>Extract Attribute Name By Role </name>
+        <help>This operator allows to extract attribute name which has sertain role. For example when name of label attribute is needed and you don't know its name you can extract the name of the atttribute using this operator. It requires to select appropriate role and enter the name of the macro which would hold attribute name. The attribute name is also avasliable through log value called attribute_name</help>
+    </operator>
+    
+    <operator>
+        <key>FilterAttributesByRole</key>
+        <name>Filter attributes by Role</name>
+        <help>This operator allows to filter attributes of the example set by specifying name of the attribute role.</help>
+    </operator>
+    <operator>        
+        <key>data_to_weights</key>
+        <name>Data to Weights</name>
+        <help>This operator converts values of example set into attribute weights. It requires to specify two attributes one containing attribute weights, and second containing attribute weights, and out of these two it creats AttributeWeights object. This is especially usefull when attribute weights are stored in external file, for example when weights were obteind in different tool.Note that, when you apply weights the attribute names in AttributeWeights object and the example set must be exactly the same be identical.</help>
+    </operator>
+    
+</operatorHelp>

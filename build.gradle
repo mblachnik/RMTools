@@ -1,0 +1,87 @@
+buildscript {
+	repositories {
+	    jcenter()
+		maven { url 'https://maven.rapidminer.com/content/groups/public/' }
+	}
+}
+
+plugins { id 'com.rapidminer.extension' version '0.9.3' }
+
+// Define Maven artifact repositories
+repositories {
+    jcenter()
+	maven { url 'https://maven.rapidminer.com/content/groups/public/' }
+}
+
+configurations {
+    runtime
+ }
+ 
+extensionConfig {
+
+	// The extension name
+    name = 'RM Tools'
+    //The namespace
+    namespace = 'rm_tools'
+    //Version id
+    version = '7.0.0'	    
+
+    /*
+     * The artifact group which will be used when publishing the extensions Jar
+     * and for package customization when initializing the project repository.
+     *
+     * It is 'com.rapidminer.extension' by default.
+     */
+    groupId = 'org.prules.rmtools'
+
+    /*
+     * The extension vendor which will be displayed in the extensions about box
+     * and for customizing the license headers when initializing the project repository.
+     *
+     * It is 'RapidMiner GmbH' by default.
+     */
+    vendor = "Silesian University of Technology, Marcin Blachnik"
+
+    /*
+     * The vendor homepage which will be displayed in the extensions about box
+     * and for customizing the license headers when initializing the project repository.
+     *
+     * It is 'www.rapidminer.com' by default.
+     */
+    homepage = "www.prules.org"
+
+	// define RapidMiner version and extension dependencies
+	// define RapidMiner version and extension dependencies
+	dependencies {
+       rapidminer '8.0.0'
+	}
+}
+
+// Define third party library dependencies
+dependencies {
+       compile files('lib/rmx_weka-7.0.0.jar')              
+       runtime fileTree(dir: "C:\\Program Files\\RapidMiner\\RapidMiner Studio\\lib\\", include: '*.*')
+}
+
+def usersHomeDir = 'D:/Projects/Java/Common/RapidMiner/9.x/home'
+
+task copyPlugin(type: Copy, dependsOn: jar) {
+    description 'Copy jar file into RapidMiner extensions folder'       
+    from jar.archivePath
+    into "$usersHomeDir/.RapidMiner/extensions"
+}
+
+task run(type: JavaExec, dependsOn:copyPlugin) {    
+    description 'Executes RapidMiner'
+    main = 'com.rapidminer.launcher.GUILauncher'
+    classpath = configurations.runtime
+    jvmArgs = ["-Duser.home=$usersHomeDir"]
+}
+
+task debug(type: JavaExec, dependsOn: copyPlugin) {
+    description 'Executes RapidMiner in debug mode'
+    main = 'com.rapidminer.launcher.GUILauncher'
+    classpath = configurations.runtime
+    jvmArgs = ["-Duser.home=$usersHomeDir"]
+    debug true
+}
